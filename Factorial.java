@@ -31,6 +31,6 @@ public class Factorial {
     }
 
     public static void main(String[] args) {
-        System.out.println(findFactorial(100));
+        System.out.println(findFactorial(10000));
     }
 }
