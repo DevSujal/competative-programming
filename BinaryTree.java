@@ -17,6 +17,15 @@ public class BinaryTree {
         }
     }
 
+    static class Info {
+        int dia, height;
+
+        Info(int dia, int height) {
+            this.dia = dia;
+            this.height = height;
+        }
+    }
+
     public void insert(int data) {
         root = insert(root, data);
     }
@@ -134,7 +143,8 @@ public class BinaryTree {
     }
 
     public int diameter() {
-        return diameter(root);
+        System.out.println(diameter(root));
+        return diameterOn(root).dia;
     }
 
     private int diameter(Node root){
@@ -146,6 +156,38 @@ public class BinaryTree {
         int diam3 = height(root.left) + height(root.right) + 1;
 
         return Math.max(Math.max(diam1, diam2), diam3);
+    }
+
+    private Info diameterOn(Node root) {
+        if(root == null) {
+            return new Info(0, 0);
+        }
+
+        Info left = diameterOn(root.left);
+        Info right = diameterOn(root.right);
+
+        int myHeight = Math.max(left.height, right.height) + 1;
+        
+        int diam1 = left.dia;
+        int diam2 = right.dia;
+        
+        int diam3 = left.dia + right.dia + 1;
+        
+        int myDiam = (Math.max(diam3, Math.max(diam1, diam2)));
+        return new Info(myDiam, myHeight);
+    }
+
+    public boolean isBalanced() {
+        return isBalanced(root);
+    }
+
+    private boolean isBalanced(Node root) {
+        if(root == null) return true;
+
+        int leftHeight = height(root.left);
+        int rightHeight = height(root.right);
+
+        return Math.abs(leftHeight - rightHeight) <= 1 && isBalanced(root.left) && isBalanced(root.right);
     }
 }
 
@@ -170,6 +212,8 @@ class BinaryTest {
         System.out.println(bs.sum());
 
         System.out.println(bs.diameter());
+
+        System.out.println(bs.isBalanced());
     }
 
 }
