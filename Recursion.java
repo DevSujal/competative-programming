@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Scanner;
-
+import java.util.*;
 public class Recursion {
 
     public static void printArray(ArrayList<Integer> arr, int idx) {
