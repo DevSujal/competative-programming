@@ -17,7 +17,7 @@ public class GCD {
         if ( b == 0)
             return a;
 
-        return findGCD(b, a % b);
+        return findGCDSecondMethod(b, a % b);
     }
 
     public static void main(String[] args) {
