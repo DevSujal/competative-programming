@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class practical5 {
+public class ErrorCorrection {
 
     public static int[] parityCalculator(int p, int hamming[]) {
         int parity[] = new int[p];

@@ -1,4 +1,3 @@
-import javax.naming.LinkException;
 
 public class LinkedList {
 
